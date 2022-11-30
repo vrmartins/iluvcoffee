@@ -11,9 +11,9 @@ import { map, tap } from 'rxjs/operators';
 export class WrapResponseInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     console.log('Before...');
-    return next
-      .handle()
-      .pipe(tap((data) => console.log('After...', data)))
-      .pipe(map((data) => ({ data })));
+    return next.handle().pipe(
+      tap((data) => console.log('After...', data)),
+      map((data) => ({ data })),
+    );
   }
 }
