@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   Query,
@@ -29,8 +30,9 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.coffeeService.findOne(id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    console.log(id);
+    return this.coffeeService.findOne('' + id);
   }
 
   @Post()
